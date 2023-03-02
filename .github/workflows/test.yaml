@@ -3,6 +3,9 @@ name: Test
 on:
   push:
 
+env:
+  EMAIL: ${{ github.actor}}@mail.com
+
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -13,14 +16,21 @@ jobs:
 
       - name: Testing the action
         id: test
-        uses: trainingspaces/semver@v0.0.10
+        uses: trainingspaces/semver@v0.0.12
+        with:
+          actor: ${{ github.actor }}
+          token: ${{ env.GITHUB_TOKEN }}
 
       - name: Creating tag
         env:
           TAG: ${{ steps.test.outputs.version }}
+          REPO: ${{ steps.test.outputs.repoUri }}
         run: |
-          git remote -v 
+          git config --local user.name ${{ github.actor }}
+          git config --logal user.email ${{ env.EMAIL }}
           echo "Creating tag $TAG"
+          echo "Configuring repo: $REPO"
+
  #         git tag -a -m "auto tag $TAG" "v$TAG"
  #         git push origin --tags
         

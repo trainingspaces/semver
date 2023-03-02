@@ -1,13 +1,26 @@
 name: 'Semver Action'
 description: 'Generate semantic version for a project based on changes in package.json'
 inputs:
-  location:
+  path:
     description: 'location of package.json file'
     required: false
     default: 'package.json'
+  uri:
+    description: 'repository url for push'
+    required: true
+  actor:
+    description: 'login name to log to github'
+    required: true
+  token:
+    description: 'token to authenticate against the repo'
+    required: true
+
 outputs:
   version:
     description: 'the version computed'
+  repoUri:
+    description: 'repository with credentials to push'
+
 runs:
   using: 'node16'
   main: 'dist/index.js'
