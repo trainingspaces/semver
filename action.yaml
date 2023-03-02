@@ -6,8 +6,8 @@ inputs:
     required: false
     default: 'package.json'
 outputs:
-  time:
-    description: 'the time the action was executed'
+  version:
+    description: 'the version computed'
 runs:
   using: 'node16'
   main: 'dist/index.js'

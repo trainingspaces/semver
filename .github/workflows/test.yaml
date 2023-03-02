@@ -11,7 +11,7 @@ jobs:
     steps:
       - name: Testing the action
         id: test
-        uses: trainingspaces/semver@v0.0.8
+        uses: trainingspaces/semver@v0.0.9
 
       - name: Output
         run: |
