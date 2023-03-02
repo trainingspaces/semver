@@ -3,7 +3,6 @@ name: Test
 on:
   push:
 
-
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -17,6 +16,9 @@ jobs:
         uses: trainingspaces/semver@v0.0.10
 
       - name: Output
+        env:
+          TAG: ${{ steps.test.outputs.version }}
         run: |
-          echo ${{ steps.test.outputs.version }}
+          git tag -a -m "auto tag $TAG" "v$TAG"
+          git push origin --tags
         
