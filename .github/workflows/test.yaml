@@ -15,5 +15,5 @@ jobs:
 
       - name: Output
         run: |
-          echo ${{ steps.test.output.time }}
+          echo ${{ steps.test.outputs.time }}
         
