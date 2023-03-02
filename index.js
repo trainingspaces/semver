@@ -1,5 +1,4 @@
 const core = require('@actions/core');
-const gh = require('@actions/github');
 const path = require('path');
 const fs = require('fs/promises');
 
@@ -19,8 +18,8 @@ const buildUri = (actor, token, uri) => {
 const run = async () => {
     
     try {
-        const path = core.getInput('path');
-        const fullPath = path.join(process.env.GITHUB_WORKSPACE, path);
+        const filePath = core.getInput('path');
+        const fullPath = path.join(process.env.GITHUB_WORKSPACE, filePath);
         await getVersion(fullPath);
 
         buildUri(
