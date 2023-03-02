@@ -1,0 +1,19 @@
+name: Test
+
+on:
+  push:
+
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Testing the action
+        id: test
+        uses: trainingspaces/semver@v0.0.8
+
+      - name: Output
+        run: |
+          echo ${{ steps.test.output.time }}
+        
