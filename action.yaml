@@ -1,0 +1,13 @@
+name: 'Semver Action'
+description: 'Generate semantic version for a project based on changes in package.json'
+inputs:
+  location:
+    description: 'location of package.json file'
+    required: true
+    default: '.'
+outputs:
+  time:
+    description: 'the time the action was executed'
+runs:
+  using: 'node16'
+  main: 'index.js'
