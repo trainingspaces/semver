@@ -3,8 +3,8 @@ description: 'Generate semantic version for a project based on changes in packag
 inputs:
   location:
     description: 'location of package.json file'
-    required: true
-    default: '.'
+    required: false
+    default: 'package.json'
 outputs:
   time:
     description: 'the time the action was executed'
