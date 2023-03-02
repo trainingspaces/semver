@@ -19,7 +19,7 @@ jobs:
         uses: trainingspaces/semver@v0.0.14
         with:
           actor: ${{ github.actor }}
-          token: ${{ env.GITHUB_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
           uri: ${{ github.repositoryUrl }}
 
       - name: Creating tag
