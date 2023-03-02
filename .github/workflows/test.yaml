@@ -15,10 +15,11 @@ jobs:
         id: test
         uses: trainingspaces/semver@v0.0.10
 
-      - name: Output
+      - name: Creating tag
         env:
           TAG: ${{ steps.test.outputs.version }}
         run: |
-          git tag -a -m "auto tag $TAG" "v$TAG"
-          git push origin --tags
+          git remote -v 
+ #         git tag -a -m "auto tag $TAG" "v$TAG"
+ #         git push origin --tags
         
