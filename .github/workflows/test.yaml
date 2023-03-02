@@ -16,10 +16,11 @@ jobs:
 
       - name: Testing the action
         id: test
-        uses: trainingspaces/semver@v0.0.12
+        uses: trainingspaces/semver@v0.0.13
         with:
           actor: ${{ github.actor }}
           token: ${{ env.GITHUB_TOKEN }}
+          uri: ${{ github.repositoryUrl }}
 
       - name: Creating tag
         env:

@@ -4,6 +4,7 @@ const path = require('path');
 const fs = require('fs/promises');
 
 const getVersion = async (filePath) => {
+    console.log(filePath);
     const content = await fs.readFile(filePath);
     const pkg = JSON.parse(content.toString());
     core.setOutput('version', pkg.version);
