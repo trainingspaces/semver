@@ -2838,7 +2838,7 @@ const getVersion = async (filePath) => {
 
 const buildUri = (actor, token, uri) => {
 
-    if(!url.startsWith('https://')) throw new Error('not an https uri, can not continue');
+    if(!uri.startsWith('https://')) throw new Error('not an https uri, can not continue');
     core.setOutput('repoUri', uri.replace('https://', `https://${actor}:${token}@`));
 }
 
