@@ -20,6 +20,7 @@ jobs:
           TAG: ${{ steps.test.outputs.version }}
         run: |
           git remote -v 
+          echo "Creating tag $TAG"
  #         git tag -a -m "auto tag $TAG" "v$TAG"
  #         git push origin --tags
         
