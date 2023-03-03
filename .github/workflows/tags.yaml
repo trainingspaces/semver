@@ -2,7 +2,7 @@ name: Checking tags
 
 on:
   push:
-    tags: [ 'v.*.*']
+    tags: [ 'v.*.*' ]
 
 jobs:
   check_tag:
