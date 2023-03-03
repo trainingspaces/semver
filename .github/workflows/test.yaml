@@ -16,14 +16,14 @@ jobs:
 
       - name: Testing the action
         id: test
-        uses: trainingspaces/semver@v0.0.16
+        uses: trainingspaces/semver@v0.0.18
 
       - name: Creating tag
         env:
           TAG: ${{ steps.test.outputs.version }}
         run: |
           git config --local user.name ${{ github.actor }}
-          git config --logal user.email ${{ env.EMAIL }}
+          git config --local user.email ${{ env.EMAIL }}
           echo "Creating tag $TAG"
           echo "Configuring repo: $REPO"
 
