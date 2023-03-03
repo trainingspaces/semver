@@ -1,0 +1,30 @@
+name: Test
+
+on:
+  push:
+
+env:
+  EMAIL: ${{ github.actor}}@mail.com
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Testing the action
+        id: test
+        uses: trainingspaces/semver@v0.0.18
+
+      - name: Creating tag
+        env:
+          TAG: ${{ steps.test.outputs.version }}
+        run: |
+          git config --local user.name ${{ github.actor }}
+          git config --local user.email ${{ env.EMAIL }}
+          echo "Creating tag $TAG"
+          git tag -a -m "auto tag $TAG" "v$TAG"
+          git push origin --tags
+        

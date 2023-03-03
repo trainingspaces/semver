@@ -1,15 +1,23 @@
 const core = require('@actions/core');
-const gh = require('@actions/github');
+const path = require('path');
+const fs = require('fs/promises');
 
-
-try {
-    const pathToPackageJson = core.getInput('location', { required: true });
-    console.log(`package to json set to ${pathToPackageJson}`);
-    const now = (new Date()).toDateString();
-    core.setOutput('time', now);
-    const payload = JSON.stringify(gh.context.payload, undefined, 2);
-    console.log(`The event payload: ${payload}`);
-
-} catch (e) {
-    core.setFailed(e.message);
+const getVersion = async (filePath) => {
+    console.log(filePath);
+    const content = await fs.readFile(filePath);
+    const pkg = JSON.parse(content.toString());
+    core.setOutput('version', pkg.version);
 }
+
+const run = async () => {
+    
+    try {
+        const filePath = core.getInput('path');
+        const fullPath = path.join(process.env.GITHUB_WORKSPACE, filePath);
+        await getVersion(fullPath);
+    } catch (e) {
+        core.setFailed(e.message);
+    }
+}
+
+run();
