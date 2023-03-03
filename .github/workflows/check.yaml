@@ -1,16 +1,15 @@
-name: Checkings
+name: Tagging
 
 on:
   push:
-    tags: [ 'v.*.*' ]
+    tags:
+      - "v*.*.*"
 
 jobs:
-  check_tag:
+  test:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Info
-        env:
-          TAG: ${{ github.ref_name }}
+      - name: Checkout repository
         run: |
-          echo "$TAG created"
+          echo "tag created"

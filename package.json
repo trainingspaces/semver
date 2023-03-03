@@ -1,6 +1,6 @@
 {
   "name": "semver",
-  "version": "0.0.20",
+  "version": "0.0.21",
   "description": "Semver action for github repositories",
   "main": "index.js",
   "scripts": {
