@@ -2836,11 +2836,11 @@ const getVersion = async (filePath) => {
     core.setOutput('version', pkg.version);
 }
 
-const buildUri = (actor, token, uri) => {
+// const buildUri = (actor, token, uri) => {
 
-    if(!uri.startsWith('https://')) throw new Error('not an https uri, can not continue');
-    core.setOutput('repoUri', uri.replace('https://', `https://${actor}:${token}@`));
-}
+//     if(!uri.startsWith('https://')) throw new Error('not an https uri, can not continue');
+//     core.setOutput('repoUri', uri.replace('https://', `https://${actor}:${token}@`));
+// }
 
 const run = async () => {
     
@@ -2849,11 +2849,11 @@ const run = async () => {
         const fullPath = path.join(process.env.GITHUB_WORKSPACE, filePath);
         await getVersion(fullPath);
 
-        buildUri(
-            core.getInput('actor', { required: true }),
-            core.getInput('uri', { required: true }),
-            core.getInput('token', { required: true })
-        );
+        // buildUri(
+        //     core.getInput('actor', { required: true }),
+        //     core.getInput('uri', { required: true }),
+        //     core.getInput('token', { required: true })
+        // );
 
     } catch (e) {
         core.setFailed(e.message);

@@ -17,15 +17,10 @@ jobs:
       - name: Testing the action
         id: test
         uses: trainingspaces/semver@v0.0.16
-        with:
-          actor: ${{ github.actor }}
-          token: ${{ secrets.GITHUB_TOKEN }}
-          uri: ${{ github.repositoryUrl }}
 
       - name: Creating tag
         env:
           TAG: ${{ steps.test.outputs.version }}
-          REPO: ${{ steps.test.outputs.repoUri }}
         run: |
           git config --local user.name ${{ github.actor }}
           git config --logal user.email ${{ env.EMAIL }}
